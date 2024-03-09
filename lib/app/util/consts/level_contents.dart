@@ -18,5 +18,6 @@ const unSelectedProgressColor = [Color(0xFFFFB74D),Color(0xFFFFB74D),
   Color(0xFF81C784),Color(0xFF81C784),
   Color(0xFFE57373),Color(0xFFE57373),];
 
-
+List<Color> colorsOfIndicator = const [Color(0xFFFF9800),Color(0xFFF57C00),
+  Color(0xFF4CAF50),Color(0xFF388E3C),Color(0xFFF44336),Color(0xFFD32F2F)];
 
