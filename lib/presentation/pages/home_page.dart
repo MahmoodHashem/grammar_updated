@@ -1,5 +1,3 @@
-
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:grammar_updated/domain/widgets/head.dart';
@@ -13,7 +11,6 @@ import 'package:get/get.dart';
 import 'lessons/lessons.dart';
 
 class Home extends StatelessWidget {
-
   var homeCtrl = Get.put(HomeController());
 
   Home({Key? key}) : super(key: key);
@@ -22,17 +19,26 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: Color.fromRGBO(13, 71, 161, 1.0),),
-        shadowColor: const Color.fromRGBO(0,0, 0, 0.5),
+        iconTheme: const IconThemeData(
+          color: Color.fromRGBO(13, 71, 161, 1.0),
+        ),
+        shadowColor: const Color.fromRGBO(0, 0, 0, 0.5),
         backgroundColor: Colors.white,
-        title: const Text('MGrammar',
+        title: const Text(
+          'MGrammar',
           style: TextStyle(
             color: Colors.black,
             fontFamily: 'LEMON MILK Pro FTR Medium',
           ),
         ),
-        leading: const Icon(Icons.account_circle_rounded,
-          color: Color.fromRGBO(13, 71, 161, 1,),
+        leading: const Icon(
+          Icons.account_circle_rounded,
+          color: Color.fromRGBO(
+            13,
+            71,
+            161,
+            1,
+          ),
           size: 24,
         ),
         centerTitle: true,
@@ -44,49 +50,61 @@ class Home extends StatelessWidget {
           children: [
             CarouselSlider(
               options: CarouselOptions(
-                onPageChanged: (index,r){
-                    homeCtrl.changeActivePage(index);
+                onPageChanged: (index, r) {
+                  homeCtrl.changeActivePage(index);
                 },
                 height: 200.0,
                 viewportFraction: 1.0,
                 enlargeCenterPage: false,
                 enableInfiniteScroll: false,
               ),
-              items: List.generate(titles.length, (i) => Level(
-                  onPress: (){
-                    Get.to(LessonsList(),
-                    transition: Transition.fade,
-                      duration: Duration(milliseconds: 300),
-
-
-                    );
-                  },
-                  colorOfContainer: cardColors[i],
-                  colorOfUnselectedProgress: unSelectedProgressColor[i],
-                  title: titles[i],
-                  subtitle: subtitles[i],
-                  colorOfSubtitle: subtitleColors[i])),
+              items: List.generate(
+                  titles.length,
+                  (i) => Level(
+                      onPress: () {
+                        Get.to(LessonsList(),
+                            transition: Transition.fade,
+                            duration: const Duration(milliseconds: 300),
+                            arguments: {
+                              'cardColor': cardColors[i],
+                              'unSelectedProgressColor': unSelectedProgressColor[i],
+                              'title': titles[i],
+                              'subtitle': subtitles[i],
+                              'subtitleColor': subtitleColors[i],
+                              'TileBorderColor': cardColors[i],
+                            });
+                      },
+                      colorOfContainer: cardColors[i],
+                      colorOfUnselectedProgress: unSelectedProgressColor[i],
+                      title: titles[i],
+                      subtitle: subtitles[i],
+                      colorOfSubtitle: subtitleColors[i])),
             ),
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(6, (i) =>
-              Obx(() => Container(
-                  margin: const EdgeInsets.all(2),
-                  child:  Icon(Icons.circle,
-                      size: 10,
-                      color: homeCtrl.activePage.value == i ? colorsOfIndicator[homeCtrl.activePage.value] : Colors.grey,
-                  ),
-                ),
-              )),
-        ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                  6,
+                  (i) => Obx(
+                        () => Container(
+                          margin: const EdgeInsets.all(2),
+                          child: Icon(
+                            Icons.circle,
+                            size: 10,
+                            color: homeCtrl.activePage.value == i
+                                ? colorsOfIndicator[homeCtrl.activePage.value]
+                                : Colors.grey,
+                          ),
+                        ),
+                      )),
+            ),
             SizedBox(
               height: 10,
             ),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 // Navigator.push(context, MaterialPageRoute(builder: (c) => const Notes()));
               },
               child: Container(
@@ -106,7 +124,7 @@ class Home extends StatelessWidget {
               height: 10,
             ),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 // Navigator.push(context, MaterialPageRoute(builder: (context) => Practice() ));
               },
               child: Container(
@@ -116,9 +134,7 @@ class Home extends StatelessWidget {
                 ),
                 height: 80,
                 child: HomeListTile(
-                    title: '      تمرین ها',
-                    icon: Icons.edit_note
-                ),
+                    title: '      تمرین ها', icon: Icons.edit_note),
               ),
             ),
             const SizedBox(
@@ -135,7 +151,6 @@ class Home extends StatelessWidget {
                 icon: Icons.assignment,
               ),
             ),
-
           ],
         ),
       ),
