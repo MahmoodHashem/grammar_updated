@@ -24,7 +24,6 @@ class Level extends StatefulWidget {
 }
 
 class _LevelState extends State<Level> {
-
   int _totalSteps = 11;
 
   @override
@@ -44,7 +43,7 @@ class _LevelState extends State<Level> {
                 BoxShadow(
                   color: Colors.black.withOpacity(0.4),
                   offset: const Offset(-6, 5),
-                  blurRadius: 10,
+                  blurRadius: 15,
                 )
               ]
             ),

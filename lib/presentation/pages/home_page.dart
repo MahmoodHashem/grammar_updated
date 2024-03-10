@@ -10,6 +10,8 @@ import '../../domain/widgets/home_list_tile.dart';
 
 import 'package:get/get.dart';
 
+import 'lessons/lessons.dart';
+
 class Home extends StatelessWidget {
 
   var homeCtrl = Get.put(HomeController());
@@ -44,7 +46,6 @@ class Home extends StatelessWidget {
               options: CarouselOptions(
                 onPageChanged: (index,r){
                     homeCtrl.changeActivePage(index);
-                    print(homeCtrl.activePage.value);
                 },
                 height: 200.0,
                 viewportFraction: 1.0,
@@ -52,6 +53,14 @@ class Home extends StatelessWidget {
                 enableInfiniteScroll: false,
               ),
               items: List.generate(titles.length, (i) => Level(
+                  onPress: (){
+                    Get.to(LessonsList(),
+                    transition: Transition.fade,
+                      duration: Duration(milliseconds: 300),
+
+
+                    );
+                  },
                   colorOfContainer: cardColors[i],
                   colorOfUnselectedProgress: unSelectedProgressColor[i],
                   title: titles[i],
