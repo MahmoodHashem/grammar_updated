@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:grammar_updated/domain/controllers/controller.dart';
 import 'package:grammar_updated/domain/widgets/head.dart';
 import 'package:grammar_updated/app/util/consts/level_contents.dart';
+import 'package:grammar_updated/presentation/pages/note/note.dart';
 
 import '../../domain/widgets/home_list_tile.dart';
 
@@ -104,7 +105,7 @@ class Home extends GetView<HomeController> {
             ),
             GestureDetector(
               onTap: () {
-                // Navigator.push(context, MaterialPageRoute(builder: (c) => const Notes()));
+                Get.to(NotePage());
               },
               child: Container(
                 decoration: BoxDecoration(
