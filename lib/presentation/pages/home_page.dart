@@ -1,9 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:grammar_updated/domain/controllers/controller.dart';
 import 'package:grammar_updated/domain/widgets/head.dart';
 import 'package:grammar_updated/app/util/consts/level_contents.dart';
-import 'package:grammar_updated/presentation/pages/note/note.dart';
+import 'package:grammar_updated/presentation/controllers/controller.dart';
 
 import '../../domain/widgets/home_list_tile.dart';
 
@@ -11,7 +10,8 @@ import 'package:get/get.dart';
 
 import 'lessons/lessons.dart';
 
-class Home extends GetView<HomeController> {
+class Home extends StatelessWidget {
+  var homeCtrl = Get.put(HomeController());
 
   Home({Key? key}) : super(key: key);
 
@@ -51,7 +51,7 @@ class Home extends GetView<HomeController> {
             CarouselSlider(
               options: CarouselOptions(
                 onPageChanged: (index, r) {
-                  controller.changeActivePage(index);
+                  homeCtrl.changeActivePage(index);
                 },
                 height: 200.0,
                 viewportFraction: 1.0,
@@ -93,8 +93,8 @@ class Home extends GetView<HomeController> {
                           child: Icon(
                             Icons.circle,
                             size: 10,
-                            color: controller.activePage.value == i
-                                ? colorsOfIndicator[controller.activePage.value]
+                            color: homeCtrl.activePage.value == i
+                                ? colorsOfIndicator[homeCtrl.activePage.value]
                                 : Colors.grey,
                           ),
                         ),
@@ -105,7 +105,7 @@ class Home extends GetView<HomeController> {
             ),
             GestureDetector(
               onTap: () {
-                Get.to(NotePage());
+                // Navigator.push(context, MaterialPageRoute(builder: (c) => const Notes()));
               },
               child: Container(
                 decoration: BoxDecoration(
