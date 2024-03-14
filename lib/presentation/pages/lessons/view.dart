@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grammar_updated/app/util/consts/level_contents.dart';
+import 'package:grammar_updated/domain/controllers/controller.dart';
+import 'package:grammar_updated/presentation/pages/lessons/lesson.dart';
 
 import '../../../domain/widgets/head.dart';
 
@@ -11,6 +13,7 @@ class LessonsList extends StatelessWidget {
   LessonsList({Key? key}) : super(key: key);
 
 
+  final homeCtrl = Get.find<HomeController>();
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +34,8 @@ class LessonsList extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),
-              )
-          )
+              ),
+          ),
       ),
       body: Column(
         children: [
@@ -51,7 +54,7 @@ class LessonsList extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 14,vertical: 7),
                     child: ListTile(
                       onTap: (){
-                          //Todo: Make The Navigator with Get
+                          Get.to(LessonScreen());
                       },
                       focusColor: Colors.blue,
                       shape: RoundedRectangleBorder(
@@ -77,11 +80,21 @@ class LessonsList extends StatelessWidget {
                         ),
                       ),
                       tileColor: Colors.transparent,
-                      leading: Radio(
-                        value: true,
-                        groupValue:true,
-                        onChanged: (value){},
-                        activeColor: argument['TileBorderColor'], ),
+                      leading: Obx(()=> Checkbox(
+                              value: homeCtrl.isLessonActive.value,
+                              onChanged: (value){
+                                homeCtrl.toggleActiveLesson();
+                                print(value);
+                                },
+                          shape: CircleBorder(),
+                            fillColor: MaterialStatePropertyAll(argument['TileBorderColor']) ,
+                          ),
+                      ),
+                      // leading: Radio(
+                      //   value: true,
+                      //   groupValue:true,
+                      //   onChanged: (value){},
+                      //   activeColor: argument['TileBorderColor'], ),
                     ),
                   );
                 }),

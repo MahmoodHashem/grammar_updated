@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:grammar_updated/domain/widgets/head.dart';
 import 'package:grammar_updated/presentation/pages/home_page.dart';
+import 'package:grammar_updated/splash_screen.dart';
 
 import 'data/storage/service.dart';
 import 'domain/binding.dart';
@@ -25,10 +26,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-
+      theme: ThemeData(
+          fontFamily: 'Estedad regular',
+      ),
       debugShowCheckedModeBanner: false,
       initialBinding: HomeBinding(),
-      home: Home(),
+      home: SplashScreen(),
       builder: EasyLoading.init(),
     );
   }

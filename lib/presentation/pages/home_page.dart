@@ -9,7 +9,8 @@ import '../../domain/widgets/home_list_tile.dart';
 
 import 'package:get/get.dart';
 
-import 'lessons/lessons.dart';
+import 'drawer.dart';
+import 'lessons/view.dart';
 
 class Home extends GetView<HomeController> {
 
@@ -18,6 +19,7 @@ class Home extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: MyDrawer(),
       appBar: AppBar(
         iconTheme: const IconThemeData(
           color: Color.fromRGBO(13, 71, 161, 1.0),

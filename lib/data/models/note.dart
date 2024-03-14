@@ -17,4 +17,11 @@ class Note {
     );
   }
 
+  Map<String, dynamic> toJson(){
+    return {
+      'title': title,
+      'details': details,
+    };
+  }
+
 }

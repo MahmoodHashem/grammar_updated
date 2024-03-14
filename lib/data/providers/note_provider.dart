@@ -24,8 +24,6 @@ class NoteProvider{
     for (var element in x) {notes.add(Note.fromJson(element));}
 
     return notes;
-
-
   }
 
 
