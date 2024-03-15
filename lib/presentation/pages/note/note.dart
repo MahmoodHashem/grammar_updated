@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../domain/controllers/controller.dart';
-import '../drawer.dart';
+import '../drawer/view.dart';
 import 'add_note.dart';
 
 
