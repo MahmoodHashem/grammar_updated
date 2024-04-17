@@ -1,0 +1,12 @@
+[33me86a41d[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m HEAD@{0}: reset: moving to e86a41d834e9828a39b5e4fca018f4f87caa1000
+[33m79e2501[m HEAD@{1}: reset: moving to 79e2501e5e48cc6563b63a1c1c4675a3daa08665
+[33mf9c3f80[m HEAD@{2}: revert: Revert "Implement Note section with customizable widgets and route arguments"
+[33m79e2501[m HEAD@{3}: commit: Implement Note section with customizable widgets and route arguments
+[33me86a41d[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m HEAD@{4}: commit: Add some Packages and fonts
+[33m82bce0e[m HEAD@{5}: commit: Add Dependency Injection
+[33m000c8c9[m HEAD@{6}: commit: Add Storage services
+[33m795cf90[m HEAD@{7}: commit: Add the arguments of lesson page
+[33m73d1197[m HEAD@{8}: commit: Create the Lesson page
+[33m5299471[m HEAD@{9}: commit: Add Indicator for page
+[33m86bb4d6[m HEAD@{10}: commit: Add constants
+[33m7c00286[m HEAD@{11}: commit (initial): Add Changes
