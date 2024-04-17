@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:grammar_updated/domain/widgets/head.dart';
 import 'package:grammar_updated/app/util/consts/level_contents.dart';
-import 'package:grammar_updated/presentation/controllers/controller.dart';
+import 'package:grammar_updated/domain/controllers/controller.dart';
 
 import '../../domain/widgets/home_list_tile.dart';
 
@@ -11,8 +11,7 @@ import 'package:get/get.dart';
 import 'drawer/view.dart';
 import 'lessons/view.dart';
 
-class Home extends StatelessWidget {
-  var homeCtrl = Get.put(HomeController());
+class Home extends GetView<HomeController> {
 
   Home({Key? key}) : super(key: key);
 
@@ -53,7 +52,7 @@ class Home extends StatelessWidget {
             CarouselSlider(
               options: CarouselOptions(
                 onPageChanged: (index, r) {
-                  homeCtrl.changeActivePage(index);
+                  controller.changeActivePage(index);
                 },
                 height: 200.0,
                 viewportFraction: 1.0,
@@ -95,8 +94,8 @@ class Home extends StatelessWidget {
                           child: Icon(
                             Icons.circle,
                             size: 10,
-                            color: homeCtrl.activePage.value == i
-                                ? colorsOfIndicator[homeCtrl.activePage.value]
+                            color: controller.activePage.value == i
+                                ? colorsOfIndicator[controller.activePage.value]
                                 : Colors.grey,
                           ),
                         ),

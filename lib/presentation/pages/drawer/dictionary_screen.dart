@@ -18,6 +18,37 @@ class _DictionaryState extends State<Dictionary> {
   TextEditingController _controller = TextEditingController();
 
 
+  List languagesFromList = ['Persian', ' English', 'Pashto', 'Arabic'];
+  String selectedFromLanguage = 'Persian';
+
+
+
+  DropdownButton fromLanguageDropdown() {
+    setState(() {
+
+    });
+    List<DropdownMenuItem<String>> dropdown = [];
+    for (int i = 0; i < languagesFromList.length; i++) {
+      String langauge = languagesFromList[i];
+      var myDropdown = DropdownMenuItem(
+        value: langauge,
+        child: Text(langauge),
+      );
+      dropdown.add(myDropdown);
+    }
+    return DropdownButton(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        underline: const SizedBox(),
+        value: selectedFromLanguage,
+        items: dropdown,
+        onChanged: (value) {
+          setState(() {
+            selectedFromLanguage = value;
+          });
+        });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -51,22 +82,7 @@ class _DictionaryState extends State<Dictionary> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Card(
-                        child: DropdownButton(
-                          underline: const SizedBox(),
-                            padding: const EdgeInsets.symmetric(horizontal: 8),
-                            value: 'Persian',
-                            items: [
-                              DropdownMenuItem(child: Text('Persian'),
-                              value:'Persian'),
-                              DropdownMenuItem(child: Text('English'),
-                              value: 'English',
-                              ),
-
-                            ],
-                            onChanged: (value) {
-                              setState(() {
-                              });
-                            })),
+                        child: fromLanguageDropdown()),
                     Expanded(
                       child: Text('متن مورد نظر تان را اینجا وارد کنید',
                       textDirection: TextDirection.rtl,
@@ -151,7 +167,7 @@ class _DictionaryState extends State<Dictionary> {
               ),
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 10),
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 15, vertical:8 ),
                 height: 200,
                 width: double.infinity,
                 decoration: BoxDecoration(
