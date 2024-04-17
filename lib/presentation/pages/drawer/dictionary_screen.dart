@@ -21,7 +21,10 @@ class _DictionaryState extends State<Dictionary> {
   List languagesFromList = ['Persian', ' English', 'Pashto', 'Arabic'];
   String selectedFromLanguage = 'Persian';
 
+  List languagesToList = ['English', ' Persian', 'Pashto', 'Arabic'];
+  String selectedToLanguage = 'English';
 
+  List languageTags = ['fa','en','ps', 'ar'];
 
   DropdownButton fromLanguageDropdown() {
     setState(() {
@@ -48,6 +51,31 @@ class _DictionaryState extends State<Dictionary> {
         });
   }
 
+
+  DropdownButton toLanguageDropdown() {
+    setState(() {
+
+    });
+    List<DropdownMenuItem<String>> dropdown = [];
+    for (int i = 0; i < languagesToList.length; i++) {
+      String langauge = languagesToList[i];
+      var myDropdown = DropdownMenuItem(
+        value: langauge,
+        child: Text(langauge),
+      );
+      dropdown.add(myDropdown);
+    }
+    return DropdownButton(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        underline: const SizedBox(),
+        value: selectedToLanguage,
+        items: dropdown,
+        onChanged: (value) {
+          setState(() {
+            selectedToLanguage = value;
+          });
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -141,18 +169,7 @@ class _DictionaryState extends State<Dictionary> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Card(
-                        child: DropdownButton(
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
-                          underline: const SizedBox(),
-                            value: 'Persian',
-                            items: [
-                              DropdownMenuItem(child: Text("Persian"), value: 'Persian'),
-                              DropdownMenuItem(child: Text("English"), value: 'English'),
-                            ],
-                            onChanged: (value) {
-                              setState(() {
-                              });
-                            })),
+                        child: toLanguageDropdown()),
                     Text('ترجمه',
                       textDirection: TextDirection.rtl,
                       style: TextStyle(
