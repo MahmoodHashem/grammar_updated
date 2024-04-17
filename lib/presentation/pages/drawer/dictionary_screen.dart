@@ -26,6 +26,9 @@ class _DictionaryState extends State<Dictionary> {
 
   List languageTags = ['fa','en','ps', 'ar'];
 
+  String translated = ' ';
+
+
   DropdownButton fromLanguageDropdown() {
     setState(() {
 
@@ -76,6 +79,40 @@ class _DictionaryState extends State<Dictionary> {
           });
         });
   }
+
+
+  String toBeTranslated(String language){
+    switch(language){
+      case 'Persian': return 'fa';
+      case 'English': return 'en';
+      case 'Pashto': return 'ps';
+      case 'Arabic': return 'ar';
+      default:
+        return 'fa';
+    }
+  }
+
+
+  Future<String> _translateText(String text, String to) async {
+
+
+
+    await _controller.text.translate(from:toBeTranslated(selectedFromLanguage) ,to: toBeTranslated(selectedToLanguage)).then((value) {
+      translated = value.text;
+    });
+
+    return translated;
+  }
+
+  bool direction(){
+    if(toBeTranslated(selectedToLanguage) == 'en'){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -155,14 +192,21 @@ class _DictionaryState extends State<Dictionary> {
                  onPressed: (){
                  setState(() {
                       });
-              }, child: Text("Translate",
+              }, child: TextButton(onPressed: () async{
+               setState(() {
+               });
+               await _translateText(_controller.text, toBeTranslated(selectedToLanguage));
+
+
+
+             }, child:Text("Translate",
                 style: TextStyle(
                   fontFamily: 'LEMON MILK Pro FTR Medium',
                   color: Colors.blue.shade800,
                   fontSize: 24
                 ),
               ),
-             ),
+             )),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
@@ -194,7 +238,23 @@ class _DictionaryState extends State<Dictionary> {
                       width: 1,
                     )
                 ),
-                child: const Text('Translated'),
+                child: FutureBuilder(
+                    future: _translateText(_controller.text, selectedToLanguage),
+                    builder: (context,snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(child: CircularProgressIndicator()); // Show loading indicator
+                      } else if (snapshot.hasError) {
+                        return const Text('Something went wrong'); // Show error message
+                      } else {
+                        return Text("${snapshot.data}",
+                          style: const TextStyle(
+                            fontSize: 16,
+                          ),
+                          textDirection: direction()?TextDirection.rtl:TextDirection.ltr,
+                          maxLines: null,
+                        );// Show translated text
+                      }
+                    },),
               ),
             ],
           ),

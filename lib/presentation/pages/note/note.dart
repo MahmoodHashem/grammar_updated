@@ -11,7 +11,7 @@ class NotePage extends StatelessWidget {
 
   final homeCtrl = Get.find<HomeController>();
 
-  //NotePage({Key? key}) : super(key: key);
+  NotePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
