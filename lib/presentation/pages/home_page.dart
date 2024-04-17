@@ -9,7 +9,7 @@ import '../../domain/widgets/home_list_tile.dart';
 
 import 'package:get/get.dart';
 
-import 'drawer.dart';
+import 'drawer/view.dart';
 import 'lessons/view.dart';
 
 class Home extends GetView<HomeController> {

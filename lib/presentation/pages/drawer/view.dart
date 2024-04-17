@@ -1,5 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'dictionary_screen.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
@@ -53,6 +56,7 @@ class MyDrawer extends StatelessWidget {
               ),
               ListTile(
                 onTap: (){
+                  Get.to(()=> Dictionary());
                 },
                 focusColor: Colors.grey,
                 hoverColor: Colors.grey,

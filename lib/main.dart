@@ -22,12 +22,11 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: ThemeData(
-          fontFamily: 'Estedad regular',
+          fontFamily:'Estedad',
       ),
       debugShowCheckedModeBanner: false,
       initialBinding: HomeBinding(),

@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
   _navigatetohome()async{
     await Future.delayed(
-        Duration(seconds: 2));
+        const Duration(seconds: 2));
    Get.off(()=> Home(), transition: Transition.zoom);
   }
 
