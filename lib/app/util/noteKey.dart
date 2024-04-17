@@ -1,3 +1,0 @@
-
-
-const noteKey = 'noteBox';
