@@ -13,6 +13,11 @@ class Dictionary extends StatefulWidget {
   State<Dictionary> createState() => DictionaryState();
 }
 
+
+/// The [DictionaryState] class contains methods for creating dropdown buttons for selecting
+/// the source and target languages, as well as methods for translating the text and
+/// determining the text direction.
+
 class DictionaryState extends State<Dictionary> {
 
   TextEditingController _controller = TextEditingController();
@@ -24,11 +29,15 @@ class DictionaryState extends State<Dictionary> {
   List<String> languagesToList = ['English', ' Persian', 'Pashto', 'Arabic'];
   String selectedToLanguage = 'English';
 
-  List<String> languageTags = ['fa','en','ps', 'ar'];
+  //List<String> languageTags = ['fa','en','ps', 'ar'];
 
   String translated = '';
 
 
+/// fromLanguageDropdown Creates a dropdown button for selecting the source language.
+/// This method generates a [DropdownButton] widget populated with items from [languagesFromList].
+/// Each item in the dropdown represents a language that can be selected as the source language.
+/// When a language is selected, it updates the [selectedFromLanguage] state to reflect the new selection.
   DropdownButton fromLanguageDropdown() {   
     List<DropdownMenuItem<String>> dropdown = languagesFromList.map((language){
       return DropdownMenuItem(
@@ -49,8 +58,12 @@ class DictionaryState extends State<Dictionary> {
   }
 
 
+
+/// toLanguageDropdown Creates a dropdown button for selecting the target language.
+/// This method generates a [DropdownButton] widget populated with items from [languagesToList].
+/// Each item in the dropdown represents a language that can be selected as the target language.
+/// When a language is selected, it updates the [selectedToLanguage] state to reflect the new selection.
   DropdownButton toLanguageDropdown() {
-  
     List<DropdownMenuItem<String>> dropdown = languagesToList.map((langauge){
       return DropdownMenuItem(
         value: langauge,
@@ -70,6 +83,12 @@ class DictionaryState extends State<Dictionary> {
   }
 
 
+
+
+/// The [toBeTranslated] method takes a [language] parameter and returns the corresponding language code.
+/// It uses a switch statement to match the [language] parameter with a specific case and returns the corresponding language code.
+/// If no match is found, it returns the default language code 'fa'.
+/// The method is used to convert the selected language from the dropdown menu into a language code that can be used for translation.
   String toBeTranslated(String language){
     switch(language){
       case 'Persian': return 'fa';
@@ -82,8 +101,12 @@ class DictionaryState extends State<Dictionary> {
   }
 
 
-  Future<String> _translateText(String text, String to) async {
 
+/// The [_translateText] method is responsible for translating text from the selected source language to the selected target language. It takes two parameters: [text] (the text to be translated) and [to] (the target language code). 
+/// Inside the method, it uses the [translate] method from the [translator] package to perform the translation. The [translate] method is called with the [from] language code (obtained from the [selectedFromLanguage] state) and the [to] language code (obtained from the [toBeTranslated] method). 
+/// The translated text is stored in the [translated] variable, which is then returned by the method. 
+/// Note: The method is asynchronous and returns a [Future], indicating that the translation may take some time to complete.
+  Future<String> _translateText(String text, String to) async {
     await _controller.text.translate(from:toBeTranslated(selectedFromLanguage) ,to: toBeTranslated(selectedToLanguage)).then((value) {
       translated = value.text;
     });
@@ -179,9 +202,6 @@ class DictionaryState extends State<Dictionary> {
                setState(() {
                });
                await _translateText(_controller.text, toBeTranslated(selectedToLanguage));
-
-
-
              }, child:Text("Translate",
                 style: TextStyle(
                   fontFamily: 'LEMON MILK Pro FTR Medium',

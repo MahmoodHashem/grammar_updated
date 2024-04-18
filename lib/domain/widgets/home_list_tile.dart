@@ -5,14 +5,14 @@ import 'package:step_progress_indicator/step_progress_indicator.dart';
 class HomeListTile extends StatefulWidget {
   HomeListTile({
     Key? key,
-    this.title,
-    this.icon,
-    this.needProgress = true,
+    required this.title,
+    required this.icon,
+     this.needProgress = true,
   });
 
-  final title;
-  final icon;
-  bool needProgress;
+  final String title;
+  final IconData icon;
+  final bool needProgress;
 
   @override
   State<HomeListTile> createState() => _HomeListTileState();
@@ -22,8 +22,8 @@ class _HomeListTileState extends State<HomeListTile> {
 
   int step = 0;
 
-  Widget progress(){
-    if(widget.needProgress == true){
+  Widget _progress(){
+    if(widget.needProgress){
       return CircularStepProgressIndicator(
         totalSteps: 25,
         currentStep: 10,
@@ -44,7 +44,7 @@ class _HomeListTileState extends State<HomeListTile> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        progress(),
+        _progress(),
         Icon(widget.icon,
           color: Colors.white30,
           size: 48,),
