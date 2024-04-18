@@ -23,10 +23,10 @@ class LessonsList extends StatelessWidget {
       appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,
-          leading: IconButton(onPressed: (){
-            Get.back();
-          }, icon: const Icon(Icons.arrow_back), color: Colors.blue),
-          actions: [IconButton(onPressed: (){}, icon: const Icon(Icons.alarm), color: Colors.blue,)],
+          leading: IconButton(onPressed: (){Get.back();}, icon: const Icon(Icons.arrow_back), color: Colors.blue),
+          actions: [IconButton(onPressed: (){
+
+          }, icon: const Icon(Icons.alarm), color: Colors.blue,)],
           title: Align(
               alignment: Alignment.centerRight,
               child: Text('${argument['title']} ${argument['subtitle']}' ,

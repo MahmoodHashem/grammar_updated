@@ -24,7 +24,7 @@ class LessonScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         leading: IconButton(onPressed: () {
           Navigator.pop(context);
-        }, icon: Icon(Icons.arrow_back, color: Colors.blue.shade800,)),
+        }, icon: Icon(Icons.arrow_forward, color: Colors.blue.shade800,)),
       ),
       body: Column(
         children: [

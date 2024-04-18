@@ -10,38 +10,32 @@ class Dictionary extends StatefulWidget {
   const Dictionary({Key? key}) : super(key: key);
 
   @override
-  State<Dictionary> createState() => _DictionaryState();
+  State<Dictionary> createState() => DictionaryState();
 }
 
-class _DictionaryState extends State<Dictionary> {
+class DictionaryState extends State<Dictionary> {
 
   TextEditingController _controller = TextEditingController();
 
 
-  List languagesFromList = ['Persian', ' English', 'Pashto', 'Arabic'];
+  List<String> languagesFromList = ['Persian', ' English', 'Pashto', 'Arabic'];
   String selectedFromLanguage = 'Persian';
 
-  List languagesToList = ['English', ' Persian', 'Pashto', 'Arabic'];
+  List<String> languagesToList = ['English', ' Persian', 'Pashto', 'Arabic'];
   String selectedToLanguage = 'English';
 
-  List languageTags = ['fa','en','ps', 'ar'];
+  List<String> languageTags = ['fa','en','ps', 'ar'];
 
-  String translated = ' ';
+  String translated = '';
 
 
-  DropdownButton fromLanguageDropdown() {
-    setState(() {
-
-    });
-    List<DropdownMenuItem<String>> dropdown = [];
-    for (int i = 0; i < languagesFromList.length; i++) {
-      String langauge = languagesFromList[i];
-      var myDropdown = DropdownMenuItem(
-        value: langauge,
-        child: Text(langauge),
-      );
-      dropdown.add(myDropdown);
-    }
+  DropdownButton fromLanguageDropdown() {   
+    List<DropdownMenuItem<String>> dropdown = languagesFromList.map((language){
+      return DropdownMenuItem(
+        value:language, 
+        child:Text(language), 
+      ); 
+    }).toList(); 
     return DropdownButton(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         underline: const SizedBox(),
@@ -56,18 +50,13 @@ class _DictionaryState extends State<Dictionary> {
 
 
   DropdownButton toLanguageDropdown() {
-    setState(() {
-
-    });
-    List<DropdownMenuItem<String>> dropdown = [];
-    for (int i = 0; i < languagesToList.length; i++) {
-      String langauge = languagesToList[i];
-      var myDropdown = DropdownMenuItem(
+  
+    List<DropdownMenuItem<String>> dropdown = languagesToList.map((langauge){
+      return DropdownMenuItem(
         value: langauge,
         child: Text(langauge),
       );
-      dropdown.add(myDropdown);
-    }
+    }).toList();
     return DropdownButton(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         underline: const SizedBox(),
@@ -95,21 +84,15 @@ class _DictionaryState extends State<Dictionary> {
 
   Future<String> _translateText(String text, String to) async {
 
-
-
     await _controller.text.translate(from:toBeTranslated(selectedFromLanguage) ,to: toBeTranslated(selectedToLanguage)).then((value) {
       translated = value.text;
     });
-
     return translated;
   }
 
   bool direction(){
-    if(toBeTranslated(selectedToLanguage) == 'en'){
-      return false;
-    }else{
-      return true;
-    }
+    return toBeTranslated(selectedToLanguage) != 'en'; 
+   
   }
 
 
