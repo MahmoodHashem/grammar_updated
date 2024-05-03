@@ -75,7 +75,7 @@ class _LevelState extends State<Level> {
                           ),
                         ),
                         const TextSpan(
-                          text: '\nزمان باقیمانده\n1 ساعت و 2 دقیقه',
+                          text: '\nدرسهای باقیمانده\n24 درس',
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.white,

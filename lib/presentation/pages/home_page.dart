@@ -12,7 +12,6 @@ import 'drawer/view.dart';
 import 'lessons/view.dart';
 
 class Home extends GetView<HomeController> {
-
   Home({Key? key}) : super(key: key);
 
   @override
@@ -68,7 +67,8 @@ class Home extends GetView<HomeController> {
                             duration: const Duration(milliseconds: 300),
                             arguments: {
                               'cardColor': cardColors[i],
-                              'unSelectedProgressColor': unSelectedProgressColor[i],
+                              'unSelectedProgressColor':
+                                  unSelectedProgressColor[i],
                               'title': titles[i],
                               'subtitle': subtitles[i],
                               'subtitleColor': subtitleColors[i],
@@ -106,7 +106,7 @@ class Home extends GetView<HomeController> {
             ),
             GestureDetector(
               onTap: () {
-                 Get.to(NotePage(), transition: Transition.rightToLeftWithFade);
+                Get.to(NotePage(), transition: Transition.rightToLeftWithFade);
               },
               child: Container(
                 decoration: BoxDecoration(

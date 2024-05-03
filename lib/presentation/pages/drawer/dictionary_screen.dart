@@ -29,8 +29,6 @@ class DictionaryState extends State<Dictionary> {
   List<String> languagesToList = ['English', ' Persian', 'Pashto', 'Arabic'];
   String selectedToLanguage = 'English';
 
-  //List<String> languageTags = ['fa','en','ps', 'ar'];
-
   String translated = '';
 
 
